@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Adham Salih | Computational Intelligence</title>
+<meta name="description" content="Adham Salih, PhD — Senior Lecturer, Department of Mechanical Engineering, Braude College of Engineering. Evolutionary computation, multi-objective optimization, neuro-control.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#fbfbfa; --surface:#ffffff; --text:#1d2433; --muted:#5b6475; --line:#e6e7ea;
+  --accent:#1f5fbf; --accent-soft:#e8f0fc; --max:960px;
+}
+@media (prefers-color-scheme: dark){
+  :root{--bg:#11141a; --surface:#181c24; --text:#e7e9ee; --muted:#9aa3b2; --line:#2a303b; --accent:#7fb0ff; --accent-soft:#1d2a40;}
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.65 Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 20px}
+
+/* nav */
+header.nav{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:58px}
+.brand{font-weight:700;color:var(--text);white-space:nowrap}
+nav{min-width:0}
+nav ul{list-style:none;display:flex;gap:4px;margin:0;padding:0;overflow-x:auto}
+nav a{display:block;padding:6px 10px;border-radius:8px;color:var(--muted);font-size:14.5px;font-weight:500;white-space:nowrap}
+nav a:hover{background:var(--accent-soft);color:var(--accent);text-decoration:none}
+
+/* hero */
+.hero{padding:64px 0 40px;display:grid;grid-template-columns:180px 1fr;gap:40px;align-items:center}
+.avatar{width:180px;height:180px;border-radius:50%;object-fit:cover;background:var(--accent-soft);border:1px solid var(--line);display:grid;place-items:center;font:600 56px "Source Serif 4",serif;color:var(--accent);overflow:hidden}
+.avatar{position:relative}
+.avatar img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1}
+h1{font:600 2.5rem/1.15 "Source Serif 4",Georgia,serif;margin:0 0 6px}
+.role{color:var(--muted);margin:0 0 16px;font-size:1.05rem}
+.links{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.links a{border:1px solid var(--line);background:var(--surface);padding:6px 12px;border-radius:999px;font-size:14px;font-weight:500;color:var(--text)}
+.links a:hover{border-color:var(--accent);color:var(--accent);text-decoration:none}
+
+/* sections */
+section{padding:44px 0;border-top:1px solid var(--line)}
+h2{font:600 1.7rem/1.2 "Source Serif 4",Georgia,serif;margin:0 0 22px}
+h3{font-size:1.05rem;margin:0 0 6px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px}
+.card p{margin:0;color:var(--muted);font-size:15px}
+.tag{display:inline-block;font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+
+.pubs{list-style:none;margin:0 0 28px;padding:0;counter-reset:p}
+.pubs li{position:relative;padding:12px 0 12px 44px;border-bottom:1px dashed var(--line);font-size:15px}
+.pubs li::before{counter-increment:p;content:"[" counter(p) "]";position:absolute;left:0;top:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+.pubs .t{font-weight:600;color:var(--text)}
+.pubs .v{font-style:italic}
+.pubs .doi{font-size:13.5px;margin-left:4px}
+.me{text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--accent)}
+.subhead{font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:0 0 4px}
+
+.terms{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.terms ul{margin:8px 0 0;padding-left:18px;color:var(--muted)}
+
+.sched{width:100%;border-collapse:collapse;font-size:15px;margin:14px 0}
+.sched td{padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+.sched td:first-child{white-space:nowrap;color:var(--muted);font-variant-numeric:tabular-nums;width:1%}
+
+footer{border-top:1px solid var(--line);padding:28px 0 40px;color:var(--muted);font-size:14px}
+
+@media (max-width:760px){
+  .hero{grid-template-columns:1fr;text-align:left;padding-top:36px;gap:20px}
+  .avatar{width:120px;height:120px;font-size:40px}
+  h1{font-size:2rem}
+  .grid3,.terms{grid-template-columns:1fr}
+  header.nav .brand{display:none}
+}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top">Adham Salih</a>
+    <nav><ul>
+      <li><a href="#research">Research</a></li>
+      <li><a href="#publications">Publications</a></li>
+      <li><a href="#teaching">Teaching</a></li>
+      <li><a href="#aamas2026">AAMAS 2026</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul></nav>
+  </div>
+</header>
+
+<main class="wrap" id="top">
+
+  <div class="hero">
+    <!-- To add your photo: upload a file named profile.jpg next to index.html -->
+    <div class="avatar"><img src="profile.jpg" alt="Adham Salih" onerror="this.remove()"><span>AS</span></div>
+    <div>
+      <h1>Adham Salih, PhD</h1>
+      <p class="role">Senior Lecturer · Department of Mechanical Engineering · Braude College of Engineering</p>
+      <p>I develop and apply evolutionary computation — especially neuro-evolution, control, evolutionary robotics, and multi/many-objective optimization.</p>
+      <div class="links">
+        <a href="https://scholar.google.co.il/citations?hl=en&user=rEkXNTcAAAAJ">Google Scholar</a>
+        <a href="https://orcid.org/0000-0002-8625-7258">ORCID</a>
+        <a href="https://www.researchgate.net/profile/Adham-Salih">ResearchGate</a>
+        <a href="https://github.com/AdhamSalihBraude">GitHub</a>
+        <a href="https://linkedin.com/in/adham-salih-702a5075">LinkedIn</a>
+        <a href="https://w3.braude.ac.il/lecturer/mr-adham-salih/">CV</a>
+        <a href="mailto:adhamsalih@braude.ac.il">Email</a>
+      </div>
+    </div>
+  </div>
+
+  <section id="research">
+    <h2>Research</h2>
+    <div class="grid3">
+      <div class="card">
+        <span class="tag">Topic 1</span>
+        <h3>Computational Intelligence</h3>
+        <p>Bio-inspired computational tools — mainly artificial neural networks, fuzzy logic and evolutionary computation — applied in engineering, with a particular interest in multi-objective optimization.</p>
+      </div>
+      <div class="card">
+        <span class="tag">Topic 2</span>
+        <h3>Evolutionary Multi-objective Optimization</h3>
+        <p>Optimization problems with conflicting objectives, where the goal is to approximate the Pareto-optimal set. Engineering applications including multi-objective robust optimization and multi-objective neuro-evolution.</p>
+      </div>
+      <div class="card">
+        <span class="tag">Topic 3</span>
+        <h3>Evolutionary Robotics &amp; Neuro-control</h3>
+        <p>Automatically evolving robot controllers and related components. Design of neuro-controllers and the use of these tools for brain–computer interfaces.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="publications">
+    <h2>Publications</h2>
+    <p class="subhead">Refereed journal papers</p>
+    <ol class="pubs">
+      <li>Mardiks, G., <span class="me">Salih, A.</span>, &amp; Moshaiov, A. (2026). <span class="t">Class-based many-objective neural architecture search for deep classifiers.</span> <span class="v">Neural Computing &amp; Applications</span>, 38, 800. <a class="doi" href="https://doi.org/10.1007/s00521-026-12510-4">DOI</a></li>
+      <li>Denenberg, E., &amp; <span class="me">Salih, A.</span> (2026). <span class="t">Bi-level evolutionary framework for designing multi-debris active removal missions.</span> <span class="v">Acta Astronautica</span>. <a class="doi" href="https://doi.org/10.1016/j.actaastro.2026.04.002">DOI</a></li>
+      <li><span class="me">Salih, A.</span>, &amp; Eisenstadt Matalon, E. (2025). <span class="t">Game-based multi-objective evolution of robust controllers.</span> <span class="v">ISA Transactions</span>. <a class="doi" href="https://doi.org/10.1016/j.isatra.2025.09.006">DOI</a></li>
+      <li>Weiss, A., Ben-Hanan, U., &amp; <span class="me">Salih, A.</span> (2025). <span class="t">Dynamics mimicking — enabling robot operation for wheelchair users.</span> <span class="v">IEEE Sensors Journal</span>. <a class="doi" href="https://doi.org/10.1109/JSEN.2025.3559666">DOI</a></li>
+      <li><span class="me">Salih, A.</span>, Roth, N., Buganim, O., &amp; Pelosi, A. D. (2024). <span class="t">A low-cost open-source uniaxial tensile system for soft tissue testing.</span> <span class="v">Hardware</span>, 2, 292–305.</li>
+      <li><span class="me">Salih, A.</span>, &amp; Eisenstadt Matalon, E. (2024). <span class="t">Solving multi-objective robust optimization problems via Stackelberg-based game model.</span> <span class="v">Swarm and Evolutionary Computation</span>, 91, 101734.</li>
+      <li>Roth, N., <span class="me">Salih, A.</span>, &amp; Rosenblum, S. (2024). <span class="t">Subjective and objective day-to-day performance measures of people with essential tremor.</span> <span class="v">Sensors</span>, 24(15), 4854.</li>
+      <li><span class="me">Salih, A.</span>, Gabbay, J., &amp; Moshaiov, A. (2024). <span class="t">Transferability of multi-objective neuro-fuzzy motion controllers: Towards cautious and courageous motion behaviors in rugged terrains.</span> <span class="v">Mathematics</span>, 12(7), 992.</li>
+      <li><span class="me">Salih, A.</span>, &amp; Moshaiov, A. (2024). <span class="t">Neuro-evolution-based generic missile guidance law for many-scenarios.</span> <span class="v">Applied Soft Computing</span>, 152, 111210.</li>
+      <li><span class="me">Salih, A.</span>, &amp; Moshaiov, A. (2022). <span class="t">Evolving topology and weights of specialized and non-specialized neuro-controllers for robot motion in various environments.</span> <span class="v">Neural Computing and Applications</span>.</li>
+      <li><span class="me">Salih, A.</span>, &amp; Moshaiov, A. (2022). <span class="t">Promoting transfer of robot neuro-motion-controllers by many-objective topology and weight evolution.</span> <span class="v">IEEE Transactions on Evolutionary Computation</span>.</li>
+      <li>Benyamin, O. B., Juvinao, D., Berlinsky, T., <span class="me">Salih, A.</span>, Solomonov, E., Waksman, I., &amp; Biswas, S. (2022). <span class="t">Designing engineering solutions to surgical problems: how to translate physiology to biomechanics.</span> <span class="v">Journal of The Institution of Engineers (India): Series C</span>, 103(5), 1095–1102.</li>
+    </ol>
+
+    <p class="subhead">Conference proceedings</p>
+    <ol class="pubs">
+      <li><span class="me">Salih, A.</span>, &amp; Moshaiov, A. (2022). <span class="t">Benchmarking many-objective topology and weight evolution of neural networks: A study with NEWS/D.</span> <span class="v">2021 IEEE Symposium Series on Computational Intelligence (SSCI)</span>, pp. 1–6.</li>
+      <li>Moshaiov, A., &amp; <span class="me">Salih, A.</span> (2022). <span class="t">Multi-objective structure and parameter evolution of neuro-fuzzy systems.</span> <span class="v">2021 IEEE Symposium Series on Computational Intelligence (SSCI)</span>, pp. 1–7.</li>
+      <li><span class="me">Salih, A.</span>, &amp; Moshaiov, A. (2021). <span class="t">Modified decomposition framework and algorithm for many-objective topology and weight evolution of neural networks.</span> <span class="v">2021 IEEE Congress on Evolutionary Computation (CEC)</span>, pp. 1478–1485.</li>
+      <li><span class="me">Salih, A.</span>, &amp; Moshaiov, A. (2017). <span class="t">Multi-objective neuro-evolution: Should the main reproduction mechanism be crossover or mutation?</span> <span class="v">2016 IEEE International Conference on Systems, Man, and Cybernetics (SMC)</span>, pp. 4585–4590.</li>
+    </ol>
+    <p>Full and up-to-date list: <a href="https://scholar.google.co.il/citations?hl=en&user=rEkXNTcAAAAJ">Google Scholar</a>.</p>
+  </section>
+
+  <section id="teaching">
+    <h2>Teaching</h2>
+    <div class="terms">
+      <div class="card">
+        <h3>Fall 2024–2025</h3>
+        <ul>
+          <li>Dynamics of Rigid Bodies</li>
+          <li>Signals and Systems</li>
+          <li>Introduction to Mechatronics</li>
+          <li>Mechatronics Laboratory</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Spring 2024–2025</h3>
+        <ul>
+          <li>Dynamics of Rigid Bodies</li>
+          <li>Signals and Systems</li>
+          <li>Integrated Systems</li>
+          <li>Mechatronics Laboratory</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="aamas2026">
+    <h2>AAMAS 2026 Tutorial</h2>
+    <div class="card">
+      <span class="tag">Half-day tutorial</span>
+      <h3>Multi-objective Optimization and its Applications for Agent Systems</h3>
+      <p>Pareto-optimality is a well-known approach to support decision-making when objectives are conflicting. This tutorial introduces Pareto-based multi-objective optimization for single- and multi-agent systems: fundamentals, leading algorithms, agent-system applications, advantages, and open research needs. Open to all AAMAS 2026 participants; no special prerequisites.</p>
+      <table class="sched">
+        <tr><td>08:45–10:15</td><td>Types of multi-objective problems, vector domination, Pareto-optimal sets and fronts, first-generation MOEAs (e.g., NSGA-II)</td></tr>
+        <tr><td>10:15–11:00</td><td>Poster session 1 &amp; coffee break</td></tr>
+        <tr><td>11:00–12:00</td><td>Advanced MOEAs (e.g., MOEA/D); extending Pareto-optimality to multi-payoff games</td></tr>
+        <tr><td>12:00–12:30</td><td>Applications to single- and multi-agent systems; research needs</td></tr>
+      </table>
+      <p><strong>Presenters:</strong> Amiram Moshaiov (Tel-Aviv University) · Adham Salih (Braude College of Engineering)</p>
+      <div class="links"><a href="https://drive.google.com/file/d/1HKWEM6KNPEwYnloyWrCQ5usG2BY5cq6Q/view?usp=sharing">Slides (PDF)</a></div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>
+      <strong>Adham Salih</strong><br>
+      <a href="https://w3.braude.ac.il/department/mech/bsc-mech">Department of Mechanical Engineering</a><br>
+      <a href="https://w3.braude.ac.il/">Braude College of Engineering</a><br>
+      Snunit 53, Karmiel 2161002, Israel<br>
+      <a href="mailto:adhamsalih@braude.ac.il">adhamsalih@braude.ac.il</a>
+    </p>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">© <span id="y">2026</span> Adham Salih · <a href="https://w3.braude.ac.il/privacy/?lang=en">Accessibility statement</a></div>
+</footer>
+<script>document.getElementById('y').textContent=new Date().getFullYear()</script>
+</body>
+</html>
